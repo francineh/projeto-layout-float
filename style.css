@@ -1,0 +1,141 @@
+/* MAGIA NEGRA PARA FUNCIONAR O BODER-BOX EM TODOS OS NAVEGADORES. */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* caixa principal */
+/* DO CELULAR/sem o media. */
+
+.wrapper {
+  width: 97%; /*eu quero que ele ocupe metade da tela por que eu quero espaço pras margens*/
+  max-width: 1200px;
+  margin: 0 auto;
+  float: none;
+  background-color: white;
+}
+/* eu quero que as minhas imagens sejam fluidas */
+div img {
+  width: 100%;
+  /* max-width: 250px; */
+}
+/* aqui tem a estilização das linhas */
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+  /* utilizando o clear:both; em cada uma das rows vamos poder usar o float sem interferir nas demais rows */
+}
+/* eu qurro que essa coluna pegue todo o espaço disponivel */
+/* quando eu utilizo a , eu seleciono multiplos seletores */
+
+.col-4,
+.col-1-2,
+.col-2,
+.col-1-4,
+.col-3-4 {
+  width: 92%;
+  margin-left: 4%;
+  margin-right: 4%;
+  min-height: 1px;
+  padding: 0.5;
+}
+
+/* aqui iremos mexer com as cores. */
+/* titulo em cima  */
+.col-4 {
+  background-color: #ac95b3;
+}
+
+/* coluna de baixo */
+.col-1-2,
+.col-1-4 {
+  background-color: #f5d6df;
+}
+/* cor do tom */
+.col-3-4 {
+  background-color: #b382df;
+}
+
+/* colunas do gatão e a tigresa */
+.col-2 {
+  background-color: #a29bc4;
+}
+/* estilizando a caixa e o texto h1 */
+
+.titulo-principal {
+  text-align: center;
+  padding: 1em;
+}
+
+/* cor do footer */
+
+.footer {
+  background-color: #241d49;
+}
+.footer p {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: bold;
+}
+/* quando coloco 2 ou 3em é equivalente a 2 ou 3 vezes o valos do pai, que nesse caso por padrão é 16px */
+.titulo-principal h1 {
+  font-size: 3em;
+}
+
+/* AQUI CHEGAMOS AO FIM DA NOSSA APLICAÇÃO PRO MOBILE */
+
+/* AQUI DAMOS INICIO A NOSSA APLICAÇÃO PRO TABLET/ NESTE CASO O NOSSO LAYOUT VAI FICAR DIVIDIDO EM 2 COLUNAS/SERA FEITO COM O @media. */
+/*  O operador only é usado para aplicar um estilo apenas se a query inteira for igual, útil para previnir que navegadores antigos apliquem os estilos selecionados. */
+@media only screen and (min-width: 480px) {
+  div img {
+    width: 100%;
+    max-width: 250px;
+  }
+  /* a nossa col-2 é o nossa tigresa e gatão que ocupa duas colunas */
+  .col-4,
+  .col-1-2,
+  .col-2,
+  .col-1-4,
+  .col-3-4 {
+    margin-right: 0;
+    padding: 0.5;
+    /* aqui esta saindo do fluxo do documento e deslizando ao lado */
+    float: left;
+  }
+
+  .col-1-2,
+  .col-2 {
+    width: 44%;
+  }
+}
+
+/* AQUI TERMINADOS O O NOSSO LAYOUT DO TABLET */
+
+/* AQUI COMEÇA O LAYOUT DO DESKTOP */
+
+@media only screen and (min-width: 768px) {
+  .col-1-2,
+  .col-1-4 {
+    width: 20%;
+  }
+
+  .col-3-4 {
+    width: 68%;
+  }
+}
+
+/* AQUI TERMINAR AS CONFIGURAÇÕES DO DESKTOP */
